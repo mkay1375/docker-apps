@@ -1,0 +1,10 @@
+version: '3'
+services:
+  minio:
+    image: minio/minio
+    restart: always
+    ports:
+      - 29000:9000
+      - 29001:29001
+    command: server /data --console-address ":29001"
+    

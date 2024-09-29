@@ -1,0 +1,557 @@
+syntax = "proto3";
+package simorghbudget.v1;
+
+import "provides/annotations.proto";
+
+service SimorghBudget {
+
+  // Budget
+
+  rpc CreateBudget(CreateBudgetRequest) returns (CreateBudgetResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/simorgh/budget/budgets"
+    };
+  };
+  rpc UpdateBudget(UpdateBudgetRequest) returns (UpdateBudgetResponse) {
+    option (google.api.http) = {
+      put: "/api/v1/simorgh/budget/budgets"
+    };
+  };
+  rpc GetBudget(GetBudgetRequest) returns (GetBudgetResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/budgets/{budget_id}"
+    };
+  };
+  rpc GetAllBudgets(GetAllBudgetsRequest) returns (GetAllBudgetsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/budgets"
+    };
+  };
+  rpc DeleteBudget(DeleteBudgetRequest) returns (DeleteBudgetResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/simorgh/budget/budgets/{budget_id}"
+    };
+  };
+
+  // Team
+
+  rpc CreateTeam(CreateTeamRequest) returns (CreateTeamResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/simorgh/budget/teams"
+    };
+  };
+  rpc UpdateTeam(UpdateTeamRequest) returns (UpdateTeamResponse) {
+    option (google.api.http) = {
+      put: "/api/v1/simorgh/budget/teams"
+    };
+  };
+  rpc GetTeam(GetTeamRequest) returns (GetTeamResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/teams/{team_id}"
+    };
+  };
+  rpc GetAllTeams(GetAllTeamsRequest) returns (GetAllTeamsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/teams"
+    };
+  };
+  rpc DeleteTeam(DeleteTeamRequest) returns (DeleteTeamResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/simorgh/budget/teams/{team_id}"
+    };
+  };
+  rpc AddTeamMember(AddTeamMemberRequest) returns (AddTeamMemberResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/simorgh/budget/teams/{team_id}/members/{username}"
+    };
+  };
+  rpc RemoveTeamMember(RemoveTeamMemberRequest) returns (RemoveTeamMemberResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/simorgh/budget/teams/{team_id}/members/{username}"
+    };
+  };
+
+  // Budget Transfer
+
+  rpc CreateBudgetTransfer(CreateBudgetTransferRequest) returns (CreateBudgetTransferResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/simorgh/budget/transfers"
+    };
+  };
+  rpc GetBudgetTransfer(GetBudgetTransferRequest) returns (GetBudgetTransferResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/transfers/{budget_transfer_id}"
+    };
+  };
+  rpc GetAllBudgetTransfers(GetAllBudgetTransfersRequest) returns (GetAllBudgetTransfersResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/transfers"
+    };
+  };
+  rpc ReportBudgetTransfers(ReportBudgetTransfersRequest) returns (ReportBudgetTransfersResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/transfers/reports/{report_name}"
+    };
+  };
+
+  // Budget Transfer Category
+
+  rpc CreateBudgetTransferCategory(CreateBudgetTransferCategoryRequest) returns (CreateBudgetTransferCategoryResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/simorgh/budget/transfer-categories"
+    };
+  };
+  rpc UpdateBudgetTransferCategory(UpdateBudgetTransferCategoryRequest) returns (UpdateBudgetTransferCategoryResponse) {
+    option (google.api.http) = {
+      put: "/api/v1/simorgh/budget/transfer-categories"
+    };
+  };
+  rpc GetBudgetTransferCategory(GetBudgetTransferCategoryRequest) returns (GetBudgetTransferCategoryResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/transfer-categories/{budget_transfer_category_id}"
+    };
+  };
+  rpc GetAllBudgetTransferCategories(GetAllBudgetTransferCategoriesRequest) returns (GetAllBudgetTransferCategoriesResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/transfer-categories"
+    };
+  };
+  rpc DeleteBudgetTransferCategory(DeleteBudgetTransferCategoryRequest) returns (DeleteBudgetTransferCategoryResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/simorgh/budget/transfer-categories/{budget_transfer_category_id}"
+    };
+  };
+
+  // Budget Transfer Destination
+
+  rpc CreateBudgetTransferDestination(CreateBudgetTransferDestinationRequest) returns (CreateBudgetTransferDestinationResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/simorgh/budget/transfer-destinations"
+    };
+  };
+  rpc UpdateBudgetTransferDestination(UpdateBudgetTransferDestinationRequest) returns (UpdateBudgetTransferDestinationResponse) {
+    option (google.api.http) = {
+      put: "/api/v1/simorgh/budget/transfer-destinations"
+    };
+  };
+  rpc GetBudgetTransferDestination(GetBudgetTransferDestinationRequest) returns (GetBudgetTransferDestinationResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/transfer-destinations/{budget_transfer_destination_id}"
+    };
+  };
+  rpc GetAllBudgetTransferDestinations(GetAllBudgetTransferDestinationsRequest) returns (GetAllBudgetTransferDestinationsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/simorgh/budget/transfer-destinations"
+    };
+  };
+  rpc DeleteBudgetTransferDestination(DeleteBudgetTransferDestinationRequest) returns (DeleteBudgetTransferDestinationResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/simorgh/budget/transfer-destinations/{budget_transfer_destination_id}"
+    };
+  };
+}
+
+// Budget Messages:
+
+message CreateBudgetRequest {
+  Budget budget = 1;
+}
+
+message CreateBudgetResponse {
+  Budget budget = 1;
+}
+
+message UpdateBudgetRequest {
+  Budget budget = 1;
+}
+
+message UpdateBudgetResponse {
+  Budget budget = 1;
+}
+
+message GetBudgetRequest {
+  oneof id {
+    int64 budget_id = 1;
+    string budget_key = 2;
+  }
+
+}
+
+message GetBudgetResponse {
+  Budget budget = 1;
+}
+
+message GetAllBudgetsRequest {
+  PageRequest page_request = 1;
+}
+
+message GetAllBudgetsResponse {
+  BudgetsPage budgets_page = 1;
+}
+
+message DeleteBudgetRequest {
+  oneof id {
+    int64 budget_id = 1;
+    string budget_key = 2;
+  }
+}
+
+message DeleteBudgetResponse {
+}
+
+message Budget {
+  int64 id = 1;
+  string created_at = 2; // Example: 2022-07-26T14:13:15.620283100
+  string updated_at = 3; // Example: 2022-07-26T14:13:15.620283100
+  string created_by = 4;
+  string updated_by = 5;
+  string name = 6;
+  string key = 7;
+  int64 team_id = 8;
+  string team_key = 9;
+  double balance = 10;
+  double minimum_balance = 11;
+  string description = 12;
+}
+
+message BudgetsPage {
+  PageRequest page_request = 1;
+  int64 total = 2;
+  repeated Budget budgets = 3;
+}
+
+// Team Messages:
+
+message CreateTeamRequest {
+  Team team = 1;
+}
+
+message CreateTeamResponse {
+  Team team = 1;
+}
+
+message UpdateTeamRequest {
+  Team team = 1;
+}
+
+message UpdateTeamResponse {
+  Team team = 1;
+}
+
+message GetTeamRequest {
+  oneof id {
+    int64 team_id = 1;
+    string team_key = 2;
+  }
+}
+
+message GetTeamResponse {
+  Team team = 1;
+}
+
+message GetAllTeamsRequest {
+  PageRequest page_request = 1;
+}
+
+message GetAllTeamsResponse {
+  TeamsPage teams_page = 1;
+}
+
+message DeleteTeamRequest {
+  oneof id {
+    int64 team_id = 1;
+    string team_key = 2;
+  }
+}
+
+message DeleteTeamResponse {
+}
+
+message AddTeamMemberRequest {
+  oneof id {
+    int64 team_id = 1;
+    string team_key = 2;
+  }
+  string username = 3;
+}
+
+message AddTeamMemberResponse {
+}
+
+message RemoveTeamMemberRequest {
+  oneof id {
+    int64 team_id = 1;
+    string team_key = 2;
+  }
+  string username = 3;
+}
+
+message RemoveTeamMemberResponse {
+}
+
+message Team {
+  int64 id = 1;
+  string created_at = 2; // Example: 2022-07-26T14:13:15.620283100
+  string updated_at = 3; // Example: 2022-07-26T14:13:15.620283100
+  string created_by = 4;
+  string updated_by = 5;
+  string name = 6;
+  string key = 7;
+  repeated string members = 8;
+  string description = 9;
+}
+
+message TeamsPage {
+  PageRequest page_request = 1;
+  int64 total = 2;
+  repeated Team teams = 3;
+}
+
+// Transfer Messages:
+
+message CreateBudgetTransferRequest {
+  BudgetTransfer budget_transfer = 1;
+}
+
+message CreateBudgetTransferResponse {
+  BudgetTransfer budget_transfer = 1;
+  BudgetTransferResult result = 2;
+}
+
+message GetBudgetTransferRequest {
+  oneof id {
+    int64 budget_transfer_id = 1;
+    string budget_transfer_key = 2;
+  }
+}
+
+message GetBudgetTransferResponse {
+  BudgetTransfer budget_transfer = 1;
+}
+
+message GetAllBudgetTransfersRequest {
+  PageRequest page_request = 1;
+}
+
+message GetAllBudgetTransfersResponse {
+  BudgetTransfersPage budget_transfers_page = 1;
+}
+
+message ReportBudgetTransfersRequest {
+  string report_name = 1;
+  BudgetTransferCriteria criteria = 2;
+}
+
+message ReportBudgetTransfersResponse {
+  BudgetTransferTreeMapReport report = 1;
+}
+
+message BudgetTransfer {
+  int64 id = 1;
+  string created_at = 2; // Example: 2022-07-26T14:13:15.620283100
+  string created_by = 3;
+  string key = 4; // Must be provided by client; transfers with same the key will be applied at most once.
+  int64 budget_id = 5;
+  string budget_key = 6;
+  int64 destination_id = 7;
+  string destination_key = 8;
+  int64 category_id = 9;
+  string category_key = 10;
+  BudgetTransferDestinationMetadata destination_metadata = 11;
+  double amount = 12;
+  string description = 13;
+  string transferred_at = 14; // Example: 2022-07-26T14:13:15.620283100
+}
+
+message BudgetTransferDestinationMetadata {
+  string campaign_id = 1;
+  int64 campaign_recipient_count = 2;
+  int64 campaign_message_count = 3;
+}
+
+message BudgetTransferResult {
+  bool succeeded = 1;
+  BudgetTransferResultError error = 2;
+  string error_message = 3;
+}
+
+enum BudgetTransferResultError {
+  UNKNOWN_ERROR = 0;
+  INSUFFICIENT_BALANCE = 1;
+  DUPLICATE_TRANSFER = 2;
+  INVALID_TRANSFER = 3;
+}
+
+message BudgetTransfersPage {
+  PageRequest page_request = 1;
+  int64 total = 2;
+  repeated BudgetTransfer budget_transfers = 3;
+}
+
+message BudgetTransferCriteria {
+  int64 budget_id = 1;
+  int64 destination_id = 2;
+  int64 category_id = 3;
+  string created_at_from = 4; // Example: 2022-07-26T14:13:15.620283100
+  string created_at_to = 5; // Example: 2022-07-26T14:13:15.620283100
+  string created_by = 6;
+  BudgetTransferType type = 7;
+  string transferred_at_from = 8; // Example: 2022-07-26T14:13:15.620283100
+  string transferred_at_to = 9; // Example: 2022-07-26T14:13:15.620283100
+
+}
+
+enum BudgetTransferType {
+  UNKNOWN = 0;
+  WITHDRAW = 1;
+  DEPOSIT = 2;
+}
+
+message BudgetTransferTreeMapReport {
+  map<string, BudgetTransferTreeMapReportItem> items = 1;
+}
+
+message BudgetTransferTreeMapReportItem {
+  string type = 1;
+  string id = 2;
+  string name = 3;
+  double total_cost = 4;
+  map<string, BudgetTransferTreeMapReportItem> items = 5;
+  int64 total_recipient_count = 6;
+  int64 total_message_count = 7;
+}
+
+// BudgetTransferCategory Messages:
+
+message CreateBudgetTransferCategoryRequest {
+  BudgetTransferCategory budget_transfer_category = 1;
+}
+
+message CreateBudgetTransferCategoryResponse {
+  BudgetTransferCategory budget_transfer_category = 1;
+}
+
+message UpdateBudgetTransferCategoryRequest {
+  BudgetTransferCategory budget_transfer_category = 1;
+}
+
+message UpdateBudgetTransferCategoryResponse {
+  BudgetTransferCategory budget_transfer_category = 1;
+}
+
+message GetBudgetTransferCategoryRequest {
+  oneof id {
+    int64 budget_transfer_category_id = 1;
+    string budget_transfer_category_key = 2;
+  }
+}
+
+message GetBudgetTransferCategoryResponse {
+  BudgetTransferCategory budget_transfer_category = 1;
+}
+
+message GetAllBudgetTransferCategoriesRequest {
+  PageRequest page_request = 1;
+}
+
+message GetAllBudgetTransferCategoriesResponse {
+  BudgetTransferCategoriesPage budget_transfer_categories_page = 1;
+}
+
+message DeleteBudgetTransferCategoryRequest {
+  oneof id {
+    int64 budget_transfer_category_id = 1;
+    string budget_transfer_category_key = 2;
+  }
+}
+
+message DeleteBudgetTransferCategoryResponse {
+}
+
+message BudgetTransferCategory {
+  int64 id = 1;
+  string created_at = 2; // Example: 2022-07-26T14:13:15.620283100
+  string updated_at = 3; // Example: 2022-07-26T14:13:15.620283100
+  string created_by = 4;
+  string updated_by = 5;
+  string name = 6;
+  string key = 7;
+  string description = 8;
+}
+
+message BudgetTransferCategoriesPage {
+  PageRequest page_request = 1;
+  int64 total = 2;
+  repeated BudgetTransferCategory budget_transfer_categories = 3;
+}
+
+// BudgetTransferDestination Messages:
+
+message CreateBudgetTransferDestinationRequest {
+  BudgetTransferDestination budget_transfer_destination = 1;
+}
+
+message CreateBudgetTransferDestinationResponse {
+  BudgetTransferDestination budget_transfer_destination = 1;
+}
+
+message UpdateBudgetTransferDestinationRequest {
+  BudgetTransferDestination budget_transfer_destination = 1;
+}
+
+message UpdateBudgetTransferDestinationResponse {
+  BudgetTransferDestination budget_transfer_destination = 1;
+}
+
+message GetBudgetTransferDestinationRequest {
+  oneof id {
+    int64 budget_transfer_destination_id = 1;
+    string budget_transfer_destination_key = 2;
+  }
+}
+
+message GetBudgetTransferDestinationResponse {
+  BudgetTransferDestination budget_transfer_destination = 1;
+}
+
+message GetAllBudgetTransferDestinationsRequest {
+  PageRequest page_request = 1;
+}
+
+message GetAllBudgetTransferDestinationsResponse {
+  BudgetTransferDestinationsPage budget_transfer_destinations_page = 1;
+}
+
+message DeleteBudgetTransferDestinationRequest {
+  oneof id {
+    int64 budget_transfer_destination_id = 1;
+    string budget_transfer_destination_key = 2;
+  }
+}
+
+message DeleteBudgetTransferDestinationResponse {
+}
+
+message BudgetTransferDestination {
+  int64 id = 1;
+  string created_at = 2; // Example: 2022-07-26T14:13:15.620283100
+  string updated_at = 3; // Example: 2022-07-26T14:13:15.620283100
+  string created_by = 4;
+  string updated_by = 5;
+  string name = 6;
+  string key = 7;
+  string description = 8;
+}
+
+message BudgetTransferDestinationsPage {
+  PageRequest page_request = 1;
+  int64 total = 2;
+  repeated BudgetTransferDestination budget_transfer_destinations = 3;
+}
+
+// Shared Messages:
+
+message PageRequest {
+  int32 page_number = 1; // zero-based page index
+  int32 page_size = 2;
+}

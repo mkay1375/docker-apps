@@ -1,0 +1,11 @@
+version: '3'
+services:
+  envoy:
+    image: docker.artifactory.tapsi.tech/envoyproxy/envoy-dev:8537d2a29265e61aaa0349311e6fc5d592659b08
+    restart: always
+    ports:
+      - "10001:10001"
+    volumes:
+      - ./config.yaml:/etc/envoy/envoy.yaml
+      - ./protos/proto.pb:/proto.pb
+    command: -c /etc/envoy/envoy.yaml -l debug

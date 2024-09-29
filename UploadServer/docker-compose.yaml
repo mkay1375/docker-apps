@@ -1,0 +1,7 @@
+version: '3'
+services:
+  simple-upload-server:
+    image: docker.artifactory.tapsi.tech/mayth/simple-upload-server
+    restart: always
+    ports:
+      - 9990:25478

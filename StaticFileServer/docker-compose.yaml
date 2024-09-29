@@ -1,0 +1,9 @@
+version: '3'
+services:
+  staticfileserver:
+    image: halverneus/static-file-server:latest
+    restart: always
+    ports:
+      - 9910:8080
+    volumes:
+      - ./data:/web 
