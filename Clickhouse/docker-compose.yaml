@@ -1,0 +1,13 @@
+services:
+    clickhouse-server:
+        ports:
+            - 18123:8123
+            - 19000:9000
+        ulimits:
+            nofile:
+                soft: 262144
+                hard: 262144
+        volumes:
+            - ./data/data:/var/lib/clickhouse/
+            - ./data/log:/var/log/clickhouse-server/
+        image: clickhouse/clickhouse-server:24.3
